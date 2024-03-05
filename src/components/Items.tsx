@@ -9,8 +9,9 @@ import { useState } from "react";
 import { useStoreData } from "../hooks/useStoreData";
 import { useStoreNfts } from "../hooks/useStoreNfts";
 import { SelectedNft, Store } from "../types/types";
-import { Item, LoadingItem } from "./Item";
+import { LoadingItem } from "./LoadingItem";
 import { StoreNftsData } from "@mintbase-js/data/lib/api/storeNfts/storeNfts.types";
+import { Item } from "./Item";
 
 function Items({
   showModal,

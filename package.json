@@ -11,14 +11,19 @@
   "dependencies": {
     "@mintbase-js/data": "0.5.4-beta.0",
     "@mintbase-js/react": "0.5.4-beta.0",
-    "@mintbase-js/sdk": "0.5.4-beta.0",
+    "@mintbase-js/sdk": "^0.5.4-beta.0",
+    "@stripe/react-stripe-js": "^2.5.1",
+    "@stripe/stripe-js": "^3.0.7",
     "big.js": "^6.2.1",
+    "graphql": "^16.8.1",
     "mintbase-ui": "^1.0.2",
     "near-api-js": "^2.1.4",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-stripe-js": "^1.1.5",
+    "stripe": "^14.19.0"
   },
   "devDependencies": {
     "@types/node": "^20",

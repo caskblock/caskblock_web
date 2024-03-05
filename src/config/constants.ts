@@ -5,13 +5,12 @@ export const DEFAULT_MARKET_ADDRESS = 'market.mintspace2.testnet';
 export const DEFAULT_NETWORK = 'testnet';
 
 export const TESTNET_CONFIG = {
-  networkId: 'testnet',
   nodeUrl: 'https://rpc.testnet.near.org',
   walletUrl: 'https://wallet.testnet.near.org',
   helperUrl: 'https://helper.testnet.near.org',
   explorerUrl: 'https://explorer.testnet.near.org',
   market: 'market.mintspace2.testnet',
-  stores: 'yeets.mintspace2.testnet,creativelicense2.testnet,ailand.mintspace2.testnet',
+  stores: '',
   // Change this referral address below to your account to test it out on purchase from other stores you add and see market fees go right to you.
   affiliate: 'unlock.testnet',
   headers: {
@@ -22,7 +21,6 @@ export const TESTNET_CONFIG = {
 };
 
 export const MAINNET_CONFIG = {
-  networkId: 'mainnet',
   nodeUrl: 'https://rpc.mainnet.near.org',
   walletUrl: 'https://wallet.mainnet.near.org',
   helperUrl: 'https://helper.mainnet.near.org',
