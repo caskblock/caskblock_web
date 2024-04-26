@@ -1,5 +1,5 @@
 import { useMetadataByMetadataId } from '../../hooks/useMetadatabyMetadataId';
-import { SelectedNft } from '../../types/types';
+import { StoreNftsData } from "@mintbase-js/data/lib/api/storeNfts/storeNfts.types";
 import { BuyModalInfo } from './BuyModalInfo';
 import { BuyModalTemplate } from './BuyModalTemplate';
 import { LoadingSaleCard } from './LoadingSaleCard';
@@ -9,11 +9,11 @@ function BuyModal({
   item,
 }: {
   closeModal: () => void
-  item: SelectedNft
+  item: StoreNftsData
 }): JSX.Element {
-  const { metadataId } = item;
+  const { metadata_id } = item;
 
-  const modalInfo = useMetadataByMetadataId({ metadataId });
+  const modalInfo = useMetadataByMetadataId(metadata_id);
 
   if (modalInfo?.isTokenListLoading) {
     return (
@@ -21,13 +21,13 @@ function BuyModal({
         <LoadingSaleCard />
       </BuyModalTemplate>
     );
+  } else {
+    return (
+      <BuyModalTemplate closeModal={closeModal}>
+        <BuyModalInfo data={modalInfo} item={item} />
+      </BuyModalTemplate>
+    );
   }
-
-  return (
-    <BuyModalTemplate closeModal={closeModal}>
-      <BuyModalInfo data={modalInfo} />
-    </BuyModalTemplate>
-  );
 }
 
 export default BuyModal;

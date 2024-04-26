@@ -44,14 +44,12 @@ const mapMetadata = (
   };
 };
 
-const useMetadataByMetadataId = ({
-  metadataId,
-}: SelectedNft): Partial<TokenListData> => {
+const useMetadataByMetadataId = (metadata_id: string): Partial<TokenListData> => {
   const { isLoading, data: metadata } = useQuery(
     "metadataByMetadataId",
     () =>
       metadataByMetadataId(
-        metadataId,
+        metadata_id,
         (process?.env?.NEXT_PUBLIC_NETWORK as Network) || "testnet"
       ),
     {

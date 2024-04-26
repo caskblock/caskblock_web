@@ -11,8 +11,10 @@ const CreditCardForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
+  const onClick = async (e: React.SyntheticEvent): Promise<void>  => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  const onClick = async () => {
     if (!stripe || !elements) {
       return;
     }
@@ -27,6 +29,9 @@ const CreditCardForm = () => {
         },
         redirect: "if_required",
       });
+
+      console.log("paymentIntent", paymentIntent)
+      
       if (error) {
         throw error.message;
       }
@@ -51,7 +56,7 @@ const CreditCardForm = () => {
 
       <button
         className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-full"
-        onClick={onClick}
+        onClick={(e) => onClick(e)}
         disabled={isLoading || isCompleted || !stripe || !elements}
       >
         {isCompleted

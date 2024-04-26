@@ -1,6 +1,8 @@
 import LandingPage from "@/components/Landing";
 import type { Metadata } from "next";
 
+import "@/styles.css"
+
 export const metadata: Metadata = {
   title: "Mintbase Simple Marketplace Example",
   description: "Simple Marketplace",

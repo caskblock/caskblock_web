@@ -28,12 +28,12 @@ export function BuyModalTemplate({
         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div className="mt-3 ml-2 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <div className="flex flex-row items-center justify-between w-full border-b-2">
+              <div className="flex flex-row items-center justify-between w-full mb-4">
                 <h3
-                  className="text-md leading-6 font-medium text-gray-900"
+                  className="text-lg leading-10 font-medium text-gray-900"
                   id="modal-title"
                 >
-                  Simple Sale
+                  MODAL TITLE
                 </h3>
                 <button
                   type="button"

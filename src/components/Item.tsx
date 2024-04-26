@@ -1,114 +1,60 @@
-import { bigToNear, parseYactoToNear } from "@/utils/numbers";
+import { bigToNear } from "@/utils/numbers";
 import { StoreNftsData } from "@mintbase-js/data/lib/api/storeNfts/storeNfts.types";
-import { SelectedNft } from "../types/types";
 import { parseMedia } from "../utils";
 import { getCachedImage } from "../utils/getCachedImages";
-import { useState } from "react";
-import { useMbWallet, useNearPrice } from "@mintbase-js/react";
-import { mint } from "@mintbase-js/sdk";
 
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
-import CreditCardForm from "./CreditCardForm";
 
 function Item({
   item,
   showModal,
 }: {
   item: StoreNftsData;
-  showModal: (item: SelectedNft) => void;
+  showModal: (item: StoreNftsData) => void;
 }): JSX.Element {
-  const [clientSecret, setClientSecret] = useState("");
-  const { activeAccountId } = useMbWallet();
-  const nearPrice = useNearPrice();
+
 
   if (!item) {
     return <></>;
   }
 
-  const { base_uri, media, metadata_id, price, title, nft_contract_id } = item;
+  const { base_uri, media, price, title } = item;
   const { mediaUrl } = parseMedia(media, base_uri);
 
-  const handleStripeBuy = async (e: React.SyntheticEvent): Promise<void> => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const nearPriceValue: number = Number(nearPrice.nearPrice);
-    const itemPriceValue: number = Number(parseYactoToNear(Number(item.price)));
-    const usdPrice = Number(nearPriceValue * itemPriceValue).toFixed(2);
-
-    const resp = await fetch(
-      "https://stripe2near-z3w7d7dnea-ew.a.run.app/payment-intent",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          priceUsd: Number(usdPrice) * 1000 ,
-          action: mint({
-            metadata: {
-              reference: metadata_id,
-              media: media,
-            },
-            ownerId: activeAccountId!,
-            contractAddress: nft_contract_id,
-          }),
-        }),
-      }
-    );
-    if (resp.ok) {
-      const json = await resp.json();
-      setClientSecret(json.clientSecret);
-    }
-  };
-
-  if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
-    throw 'Did you forget to add a ".env.local" file?';
-  }
-
-  const stripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
   return (
-    <div
-      className="p-2 bg-black bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 rounded-xl shadow-xl cursor-pointer"
-      onClick={() => showModal({ metadataId: metadata_id })}
+    <div 
+      className="relative flex flex-col group !border-0 hover:bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl"
+      onClick={() => showModal(item)}
     >
-      <div className="w-full relative">
-        {mediaUrl ? (
+      <div className="relative rounded-3xl w-full h-64 overflow-hidden">
           <img
-            src={getCachedImage(mediaUrl)}
+            src={mediaUrl ? getCachedImage(mediaUrl) : ""}
             alt={title}
-            className="rounded-md w-full h-64 object-cover"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300 ease-in-out will-change-transform"
           />
-        ) : (
-          <div className="w-full h-64 flex justify-center items-center">
-            No Nft Media Available
+      </div>
+      <div className="p-4 py-5 space-y-3">
+        <h2 className="text-lg font-medium">{title}</h2>
+        <div className="w-2d4 w-full border-b border-neutral-100"></div>
+        <div className="flex justify-between items-end">
+          <div className="pt-3">
+            <div className="flex items-baseline border-2 border-green-500 rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
+              <span className="block absolute font-normal bottom-full translate-y-1 p-1 -mx-1 text-xs text-neutral-500 bg-white ">
+                Price
+              </span>
+              <span className="text-green-500 !leading-none">
+                {bigToNear(price?.toString() || "0")} NEAR
+              </span>
+            </div>
           </div>
-        )}
+          <div className="bg-black/50  flex items-center justify-center rounded-full text-white absolute bottom-6 right-4 !w-9 !h-9">
+            <svg className="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none">
+              <path d="M12.53 20.4201H6.21C3.05 20.4201 2 18.3201 2 16.2101V7.79008C2 4.63008 3.05 3.58008 6.21 3.58008H12.53C15.69 3.58008 16.74 4.63008 16.74 7.79008V16.2101C16.74 19.3701 15.68 20.4201 12.53 20.4201Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M19.52 17.0999L16.74 15.1499V8.83989L19.52 6.88989C20.88 5.93989 22 6.51989 22 8.18989V15.8099C22 17.4799 20.88 18.0599 19.52 17.0999Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              </path>
+            </svg>
+          </div>
+        </div>
+
       </div>
-      <div className="flex flex-col mt-2">
-        <div className="font-semibold text-md">{title}</div>
-        <div className="text-xs">{bigToNear(price?.toString() || "0")} N</div>
-      </div>
-      {!clientSecret ? (
-        <button
-          className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg disabled:bg-gray-400 disabled:opacity-50"
-          onClick={(e) => handleStripeBuy(e)}
-          disabled={!activeAccountId}
-        >
-          Buy with credit card
-        </button>
-      ) : (
-        <Elements
-          options={{
-            clientSecret,
-            appearance: { theme: "night" },
-          }}
-          stripe={stripe}
-        >
-          <CreditCardForm />
-        </Elements>
-      )}
     </div>
   );
 }

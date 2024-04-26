@@ -19,12 +19,15 @@ const useStoreNfts = (store?: string) => {
   const defaultStores = store || process?.env?.NEXT_PUBLIC_STORES as string;
   const formatedStores = defaultStores.split(/[ ,]+/);
 
+  //firstMintbaseStore
+  console.log('formatedStores', formatedStores);
+
   const { isLoading, error, data } = useQuery(
     ["storeNfts", store],
     () =>
       storeNfts(
         formatedStores,
-        true,
+        false,
         undefined,
         (process?.env?.NEXT_PUBLIC_NETWORK as Network) || "testnet"
       ),
