@@ -69,3 +69,17 @@ export interface PriceEl {
 export interface BuyModalData {
   data: TokenListData
 }
+
+
+export interface Product {
+  title?: string;
+  description?: string;
+  media?: string;
+  price?: number;
+  copies?: number;
+  issued_at?: string;
+  expires_at?: string;
+  starts_at?: string;
+  status?: string;
+  metadataId?: string;
+}

@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/utils/resetUrlParams.js", "src/components/WalletPage.jsx", "src/components/Items.jsx", "src/components/Item.jsx", "src/app/wallet/page.js", "src/components/header.jsx", "src/components/LandingPage.jsx", "src/app/page.tsx", "src/components/BuyModal/index.jsx", "src/components/BuyModal/BuyModalInfo/index.jsx", "src/components/LoadingItem.jsx", "src/components/ModalTemplate.jsx", "src/components/LoadingSaleCard.jsx", "src/components/BuyModal/AvailableNft/Minter.jsx", "src/components/BuyModal/AvailableNft/index.jsx", "src/components/BuyModal/AvailableNft/ProviderSelector.jsx", "src/components/BuyModal/AvailableNft/CreditCardForm.jsx", "src/components/BuyModal/AvailableNft/BuyWithStripe.jsx", "src/components/BuyModal/AvailableNft/BuyWithNear.jsx"],
   "exclude": ["node_modules"]
 }

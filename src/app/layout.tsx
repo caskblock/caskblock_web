@@ -7,7 +7,7 @@ import "./globals.css";
 
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Header from "@/components/header";
+import Header from "@/components/header.jsx";
 import { mbjs } from "@mintbase-js/sdk";
 
 const inter = Inter({ subsets: ["latin"] });

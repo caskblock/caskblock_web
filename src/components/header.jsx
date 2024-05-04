@@ -1,6 +1,7 @@
 "use client";
 import { useMbWallet } from "@mintbase-js/react";
 import { useState } from "react";
+import Link from 'next/link'
 
 
 const Header = () => {
@@ -59,12 +60,17 @@ const Header = () => {
                     <span className="text-neutral-900">Backed by real life</span>
                   </div>
                                 
-                  <ul className="flex flex-col py-6 px-2 space-y-1 pb-5 border-b">
+                  <ul className="flex flex-col py-6 px-2 space-y-1 pb-5 border-b">  
                     <li className="text-neutral-900 dark:text-white">
-                      <button 
-                        className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700" 
-                        >Another Page
-                      </button>
+                      <Link
+                        className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                        href="/">Home</Link>
+                    </li>
+                    <li className="text-neutral-900 dark:text-white">
+                      <Link
+                        className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                        href="/wallet">Wallet</Link>
+
                     </li>
                   </ul>
     
