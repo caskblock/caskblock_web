@@ -2,12 +2,12 @@ import ModalTemplate from '../ModalTemplate';
 import AvailableNft from './AvailableNft';
 import LoadingSaleCard from '../LoadingSaleCard';
 
-const BuyModal = ({closeModal, tokenId}) => {
+const BuyModal = ({closeModal, metadataId}) => {
 
   return (
     <ModalTemplate closeModal={closeModal} title="Buy" >
-      {(tokenId) 
-        ? <AvailableNft tokenId={tokenId} /> 
+      {(metadataId) 
+        ? <AvailableNft metadataId={metadataId} /> 
         : <LoadingSaleCard />}
     </ModalTemplate>
   );
