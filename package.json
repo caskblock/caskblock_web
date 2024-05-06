@@ -14,7 +14,6 @@
     "@mintbase-js/sdk": "0.6.0-beta-prerelease.5",
     "@stripe/react-stripe-js": "^2.5.1",
     "@stripe/stripe-js": "^3.0.7",
-    "axios": "^1.6.8",
     "big.js": "^6.2.1",
     "graphql": "^16.8.1",
     "mintbase-ui": "^1.0.2",

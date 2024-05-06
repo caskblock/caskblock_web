@@ -1,5 +1,5 @@
 
-import "@/styles.css"
+import "@/styles.css";
 import WalletPage from "@/components/WalletPage.jsx";
 
 export default function Wallet() {
