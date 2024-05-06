@@ -1,4 +1,4 @@
-function LoadingItem(): JSX.Element {
+const LoadingItem = () => {
   const products = Array.from(Array(12).keys());
 
   return (
@@ -10,6 +10,6 @@ function LoadingItem(): JSX.Element {
       ))}
     </>
   );
-}
+};
 
-export { LoadingItem };
+export default LoadingItem;

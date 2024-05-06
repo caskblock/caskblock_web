@@ -11,7 +11,7 @@
   "dependencies": {
     "@mintbase-js/data": "0.5.4-beta.0",
     "@mintbase-js/react": "0.5.4-beta.0",
-    "@mintbase-js/sdk": "0.6.0-beta-prerelease.3",
+    "@mintbase-js/sdk": "0.6.0-beta-prerelease.5",
     "@stripe/react-stripe-js": "^2.5.1",
     "@stripe/stripe-js": "^3.0.7",
     "big.js": "^6.2.1",

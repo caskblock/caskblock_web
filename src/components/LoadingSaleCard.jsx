@@ -1,4 +1,4 @@
-export function LoadingSaleCard(): JSX.Element {
+const LoadingSaleCard = () => {
   return (
     <div className="mb-4">
       <div className="py-4 flex justify-center animate-pulse">
@@ -15,4 +15,6 @@ export function LoadingSaleCard(): JSX.Element {
       </div>
     </div>
   );
-}
+};
+
+export default LoadingSaleCard;
