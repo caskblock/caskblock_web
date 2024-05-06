@@ -3,7 +3,6 @@ import { useMbWallet } from "@mintbase-js/react";
 import { useState } from "react";
 import Link from 'next/link'
 
-
 const Header = () => {
   const { isConnected, connect, activeAccountId, disconnect } = useMbWallet();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -13,6 +12,14 @@ const Header = () => {
     : " Connect NEAR Wallet";
 
   const buttonAction = isConnected ? disconnect : connect;
+
+  const handleRedirect = () => {
+    if (!isConnected) {
+      connect();
+    } else {
+      window.location.href = "/wallet";
+    }
+  };
 
   return (
     <div className="relative z-10 onTop">
@@ -63,13 +70,17 @@ const Header = () => {
                   <ul className="flex flex-col py-6 px-2 space-y-1 pb-5 border-b">  
                     <li className="text-neutral-900 dark:text-white">
                       <Link
-                        className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                        href="/">Home</Link>
+                          className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                          href="/">
+                        Home
+                      </Link>
                     </li>
                     <li className="text-neutral-900 dark:text-white">
-                      <Link
-                        className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                        href="/wallet">Wallet</Link>
+                      <button
+                          className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                          onClick={handleRedirect}>
+                        Wallet
+                      </button>
 
                     </li>
                   </ul>

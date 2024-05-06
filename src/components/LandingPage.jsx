@@ -30,17 +30,25 @@ const LandingPage = () => {
     const params = new URLSearchParams(window.location.search)
     const metadataId = params.get("metadata_id") || ""
 
-    //replace code below to fetch data from airtable
     const fetchMetadata = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/products');        
+        
+        const response = await fetch('http://localhost:8080/products', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        const parsedResponse = await response.json();
+
         // needed for stripe??
         if (metadataId) {
           const item = data.mb_views_nft_metadata_unburned?.find((item) => item.metadata_id === metadataId);
           if (item) { handleOpenBuyModal(item) };     
         };
     
-        setNftsData(response.data);
+        setNftsData(parsedResponse);
       } catch (error) {
         console.error('Error fetching NFTs:', error);
       };

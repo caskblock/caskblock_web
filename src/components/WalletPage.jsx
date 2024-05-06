@@ -26,6 +26,7 @@ const WalletPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (!activeAccountId) {
+        return [];
       } else { 
         const { data, error } = await ownedNftsByStore(activeAccountId, 'jinkanfts.mintspace3.testnet', { limit: 10, offset: 0 }, 'testnet');
     
@@ -37,8 +38,7 @@ const WalletPage = () => {
     };
   
     fetchData();
-  }, []);
-
+  }, [activeAccountId]);
 
   return (
     <div className="w-full flex flex-col items-start gap-4">

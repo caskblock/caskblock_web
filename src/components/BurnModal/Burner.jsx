@@ -1,14 +1,21 @@
-import { burn } from "@mintbase-js/sdk";
- 
- const Burner = ({tokenId}) => {
+import { burn, execute } from "@mintbase-js/sdk";
+ import { useMbWallet } from "@mintbase-js/react";
+
+ const Burner = ({tokenId, done}) => {
+
+  const { selector } = useMbWallet();
 
   const handleBurn = async () => {
     const wallet = await selector.wallet();
 
-    await execute(
+    const response = await execute(
       {wallet},
       burn({ contractAddress: 'jinkanfts.mintspace3.testnet', tokenIds: [tokenId] })
     );
+
+    const { hash, signer_id } = response.transaction;
+
+    done(signer_id, hash);
   };
 
   return (
