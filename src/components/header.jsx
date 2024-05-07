@@ -13,7 +13,7 @@ const Header = () => {
 
   const handleLogout = () => {
     disconnect();
-    if (window.location.pathname === "/wallet") setTimeout(() => window.location.href = "/", 5000);
+    if (window.location.pathname === "/wallet") setTimeout(() => window.location.href = "/", 10000);
   };
   
   const buttonAction = isConnected ? handleLogout : connect;

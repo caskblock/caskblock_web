@@ -1,25 +1,29 @@
 import { useMbWallet } from "@mintbase-js/react";
 import { mintOnMetadata, execute } from "@mintbase-js/sdk";
 
-const Minter = ({metadataId, price}) => {
+const Minter = ({metadataId, price, onStepChange}) => {
 
   const { selector, activeAccountId } = useMbWallet();
 
   const handleMintOnMetadata = async () => {
     const wallet = await selector.wallet();
 
-    await execute(
+    const response = await execute(
       { wallet }, 
       mintOnMetadata({
         contractAddress: 'jinkanfts.mintspace3.testnet',
         metadataId: metadataId,
         ownerId: activeAccountId || "finalmintbase.testnet",
         price: price,
-        // ftAddress: "usdc.fakes.testnet",
-        // ftDecimals: 6,
+        ftAddress: "usdc.fakes.testnet",
+        ftDecimals: 6,
       })
     );
-  }
+
+    if (response?.length == 2 && response[1]?.status?.SuccessValue !== "") {
+      onStepChange(1);
+    }
+  };
 
   return (
     <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
