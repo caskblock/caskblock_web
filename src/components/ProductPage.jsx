@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import BuyModal from "./BuyModal";
 
 import SingleItem from "./SingleItem";
+import { fetchSingleProduct } from "@/utils/fetchSingleProduct";
 
 const ProductPage = ({ id }) => {
   const [showBuyModal, setShowBuyModal] = useState(false);
@@ -21,16 +22,10 @@ const ProductPage = ({ id }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("id", id);
-        const response = await fetch(`http://localhost:8080/product/${id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
+        const response = await fetchSingleProduct(id);
         const parsedResponse = await response.json();
         setData(parsedResponse);
+        
       } catch (error) {
         console.error("Error fetching NFTs:", error);
       }

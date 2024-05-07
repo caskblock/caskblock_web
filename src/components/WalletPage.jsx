@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Items from "./Items";
 import { useMbWallet } from "@mintbase-js/react";
-import { ownedNftsByStore } from '@mintbase-js/data';
 import BurnModal from "./BurnModal";
+import { fetchNftsInWallet } from "@/utils/fetchNftsInWallet";
 
 const WalletPage = () => {
   const [selectedItem, setSelectedItem] = useState({});
@@ -27,13 +27,10 @@ const WalletPage = () => {
     const fetchData = async () => {
       if (!activeAccountId) {
         return [];
-      } else { 
-        const { data, error } = await ownedNftsByStore(activeAccountId, 'jinkanfts.mintspace3.testnet', { limit: 10, offset: 0 }, 'testnet');
-    
-        if (error) {console.log('error', error)}
-    
-        console.log(data?.token);
-        setNftsData(data?.token || []);
+      } else {
+        const response = await fetchNftsInWallet(activeAccountId);
+        const parsedResponse = await response.json();
+        setNftsData(parsedResponse?.data?.mb_views_nft_tokens || []);
       }
     };
   
@@ -48,7 +45,7 @@ const WalletPage = () => {
 
       <div className="mx-24 mt-4">
         {!!showBurnModal && (
-          <BurnModal closeModal={handleCloseBurnModal} tokenId={selectedItem?.tokenId} />
+          <BurnModal closeModal={handleCloseBurnModal} tokenId={selectedItem?.token_id} />
         )}
       </div>
     </div>

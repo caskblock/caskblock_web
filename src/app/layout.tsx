@@ -27,7 +27,6 @@ export const getCallbackUrl = () => {
   return callbackUrl
 }
 
-
 export default function RootLayout({
   children,
 }: {
