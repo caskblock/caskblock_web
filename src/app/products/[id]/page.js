@@ -1,4 +1,3 @@
-import LandingPage from "@/components/LandingPage.jsx";
 import ProductPage from "@/components/ProductPage";
 
 export default function Product({ params }) {
@@ -7,4 +6,4 @@ export default function Product({ params }) {
       <ProductPage id={params.id} />
     </main>
   );
-}
+};

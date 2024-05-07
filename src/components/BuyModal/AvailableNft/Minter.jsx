@@ -11,12 +11,12 @@ const Minter = ({metadataId, price, onStepChange}) => {
     const response = await execute(
       { wallet }, 
       mintOnMetadata({
-        contractAddress: 'jinkanfts.mintspace3.testnet',
+        contractAddress: process.env.NEXT_PUBLIC_PWX_STORE,
         metadataId: metadataId,
-        ownerId: activeAccountId || "finalmintbase.testnet",
+        ownerId: activeAccountId,
         price: price,
-        ftAddress: "usdc.fakes.testnet",
-        ftDecimals: 6,
+        ftAddress: process.env.NEXT_PUBLIC_FT_ADDRESS,
+        ftDecimals: process.env.NEXT_PUBLIC_FT_DECIMALS,
       })
     );
 

@@ -17,9 +17,8 @@ const BurnModal = ({closeModal, tokenId}) => {
     setUser(newUser);
   };
 
-  const handleSuccessfulBurn  = async (walletAddress, transactionHx) => {
-
-    const response = await fetch('http://localhost:8080/orders', {
+  const handleSuccessfulBurn  = async (walletAddress, transactionHx) => {    
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

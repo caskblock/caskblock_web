@@ -9,22 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@mintbase-js/data": "0.5.4-beta.0",
     "@mintbase-js/react": "0.5.4-beta.0",
-    "@mintbase-js/sdk": "0.6.0-beta-prerelease.5",
+    "@mintbase-js/sdk": "0.6.0-beta-prerelease.6",
+    "@mui/material": "^5.15.16",
     "@stripe/react-stripe-js": "^2.5.1",
     "@stripe/stripe-js": "^3.0.7",
     "big.js": "^6.2.1",
     "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "mintbase-ui": "^1.0.2",
     "near-api-js": "^4.0.0",
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.22.3",
-    "react-stripe-js": "^1.1.5",
-    "stripe": "^15.3.0"
+    "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.5",

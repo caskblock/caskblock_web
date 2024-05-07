@@ -10,7 +10,7 @@ import { burn, execute } from "@mintbase-js/sdk";
 
     const response = await execute(
       {wallet},
-      burn({ contractAddress: 'jinkanfts.mintspace3.testnet', tokenIds: [tokenId] })
+      burn({ contractAddress: process.env.NEXT_PUBLIC_PWX_STORE, tokenIds: [tokenId] })
     );
 
     const { hash, signer_id } = response.transaction;
