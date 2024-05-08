@@ -6,10 +6,10 @@ const Item = ({ item, showModal }) => {
   const handleRedirect = () => {
     window.location.href=`/products/${item.id}`
   };
-  
+
   return (
     <div
-      className="relative flex flex-col group !border-0 hover:bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl"
+      className="relative flex flex-col group !border-0 bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl"
       onClick={price ? handleRedirect : null}
     >
       <div className="relative rounded-3xl w-full h-64 overflow-hidden">
