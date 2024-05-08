@@ -4,8 +4,9 @@ const SingleItem = ({media, description, price, title, onClick}) => {
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
         <div className="space-y-8 lg:space-y-10">
-          <div className="rounded-3xl overflow-hidden z-0">
+          <div className="overflow-hidden z-0">
             <img
+              className='rounded-3xl'
               src={media}
               style={{
                 objectFit: "cover",
