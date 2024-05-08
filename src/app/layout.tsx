@@ -20,10 +20,10 @@ export const getCallbackUrl = () => {
   if (typeof window !== 'undefined') {
     callbackUrl =
       isDev || window?.location?.host.includes('localhost')
-        ? `http://${window?.location.host}`
+        ? window.location.origin + window.location.pathname
         : `}`
   }
-
+console.log('callbackUrl:',callbackUrl);
   return callbackUrl
 }
 

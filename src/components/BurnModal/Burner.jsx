@@ -9,7 +9,10 @@ import { burn, execute } from "@mintbase-js/sdk";
     const wallet = await selector.wallet();
 
     const response = await execute(
-      {wallet},
+      {
+        wallet,
+        callbackUrl: window.location.href
+      },
       burn({ contractAddress: process.env.NEXT_PUBLIC_PWX_STORE, tokenIds: [tokenId] })
     );
 

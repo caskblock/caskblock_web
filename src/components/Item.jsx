@@ -29,7 +29,7 @@ const Item = ({ item, showModal }) => {
                 <div className="cursor-pointer flex items-baseline border-2 border-green-500 rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
                   <button
                     className="text-green-500 !leading-none"
-                    onClick={() => showModal(item)}
+                    onClick={(evt) => { evt.stopPropagation(); showModal(item); }}
                   >
                     {price} USDC
                   </button>
@@ -57,7 +57,7 @@ const Item = ({ item, showModal }) => {
                     className="duration-300 nc-Badge inline-flex px-2.5"
                     onClick={() => showModal(item)}
                   >
-                    <span>Burn</span>
+                    <span>Redeem</span>
                   </button>
                 </div>
               </div>

@@ -17,7 +17,7 @@ const BurnModal = ({closeModal, tokenId}) => {
     setUser(newUser);
   };
 
-  const handleSuccessfulBurn  = async (walletAddress, transactionHx) => {    
+  const handleSuccessfulBurn  = async (walletAddress, transactionHx) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/orders`, {
       method: 'POST',
       headers: {
@@ -33,19 +33,19 @@ const BurnModal = ({closeModal, tokenId}) => {
   };
 
   return (
-    <ModalTemplate closeModal={closeModal} title="Burn" >
-      
+    <ModalTemplate closeModal={closeModal} title="Redeem" >
+
       { step == 0 &&
           <KYCForm email={email} name={name} onChange={handleChange} onSubmit={() => setStep(1)}/>
       }
 
       { step == 1 &&
-          <Burner tokenId={tokenId} done={handleSuccessfulBurn} /> 
+          <Burner tokenId={tokenId} done={handleSuccessfulBurn} />
       }
 
       { step == 2 &&
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-            <p>Your order has been created. We will contact you shortly.</p> 
+            <p>Your order has been created. We will contact you shortly.</p>
           </div>
       }
 

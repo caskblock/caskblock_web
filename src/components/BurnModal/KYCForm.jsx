@@ -4,8 +4,9 @@ const KYCForm = ({email, name, onChange, onSubmit}) => {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+        <div className='text-center'>In order to redeem your item, you need to provide your email and name.</div>
         <div>
-            <label class="nc-Label text-base font-medium " data-nc-id="Label">Username</label>
+            <label class="nc-Label text-base font-medium " data-nc-id="Label">Name</label>
             <input type="text" id="name" name="name" value={name} className={`mt-1.5 flex block w-full rounded-2xl text-sm font-normal h-11 px-4 py-3 border`} onChange={onChange}/>
         </div>
         <div>
