@@ -32,7 +32,6 @@ const ProductsPage = ({ distillerySlug = "" }) => {
         const products = await fetchPublishedProducts(distillerySlug);
         
         setNftsData(products);
-        if (products.length > 0) setDistilleries([...new Set(products.map((item) => item.distillerySlug))]);
       } catch (error) {
         console.error("Error fetching NFTs:", error);
       }
