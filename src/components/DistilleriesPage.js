@@ -23,7 +23,7 @@ const DistilleriesPage = () => {
   }, []);
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full  py-12 px-12 rounded-3xl bg-neutral-100">
         <Items data={distilleriesData} idDistilleries={true} />
     </div>
   );

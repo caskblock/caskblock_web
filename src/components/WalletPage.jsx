@@ -37,7 +37,7 @@ const WalletPage = () => {
   }, [activeAccountId]);
 
   return (
-    <div className="w-full flex flex-col items-start gap-4">
+    <div className="w-full flex flex-col items-start gap-4 py-12 px-12 rounded-3xl bg-neutral-100">
       <div className="flex w-full">
         <Items data={nftsData} showModal={handleOpenBurnModal}/>
       </div>

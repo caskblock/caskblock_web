@@ -11,7 +11,7 @@ const DistilleryCard = ({ item }) => {
 
   return (
     <div
-      className="relative flex flex-col group !border-0 bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl"
+      className="relative flex flex-col group !border-0 bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl bg-neutral-100"
     >
       <div className="relative rounded-3xl w-full h-64 overflow-hidden">
         <img

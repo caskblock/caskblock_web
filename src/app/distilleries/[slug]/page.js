@@ -21,14 +21,14 @@ export default function Distillery({ params }) {
 
   return (
     <main className="px-2 sm:px-8 md:px-24">
-      <div className="p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row items-center">
+      <div className="p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row items-center bg-neutral-100 mb-8">
         <img
           alt="nc-imgs"
           loading="lazy"
           decoding="async"
           data-nimg="fill"
           src={distilleryData?.media || "/logo.png"}
-          style={{ inset: "0px", color: "transparent", maxHeight: "200px", objectFit: "contain" }}
+          style={{ borderRadius: "20px", inset: "0px", color: "transparent", maxHeight: "200px", objectFit: "contain" }}
         />
         <div className="pt-5 md:pt-1 md:ml-6 xl:ml-14 flex-grow">
           <div className="max-w-screen-sm ">
