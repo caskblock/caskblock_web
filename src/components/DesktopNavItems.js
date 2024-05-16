@@ -125,6 +125,13 @@ const DesktopNavItems = ({
         </Link>
         <Link
           className="flex w-full justify-center items-center py-2.5 px-4 text-sm font-normal tracking-wide hover:bg-neutral-100 rounded-lg text-neutral-700 min-w-36"
+          href="/products"
+          onClick={handleClose}
+        >
+          Products
+        </Link>
+        <Link
+          className="flex w-full justify-center items-center py-2.5 px-4 text-sm font-normal tracking-wide hover:bg-neutral-100 rounded-lg text-neutral-700 min-w-36"
           href="/distilleries"
           onClick={handleClose}
         >
