@@ -27,11 +27,18 @@ background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 
     background-color: rgb(2, 132, 199);
 }
 
+.bg-primary.disabled {
+    --tw-bg-opacity: 1;
+    background-color: rgb(229, 231, 235);
+    color: rgba(128, 128, 128, 0.863);
+    border: rgba(128, 128, 128, 0.863) 1px solid;
+}
+
 .bg-white {
     background-color: rgb(255 255 255);
 }
 
-.primary-button:hover{
+.primary-button:hover:not(.disabled){
     background-color: rgb(3, 105, 161);;
 }
 
@@ -56,4 +63,9 @@ background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 
 .dropdown-menu *:hover {
     color: #D4AF37;
     background-color: whitesmoke;
+}
+
+#distilleryNavItem .selected {
+    color: white;
+    background-color: black;
 }

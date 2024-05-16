@@ -6,13 +6,13 @@ const KYCForm = ({email, name, onChange, onSubmit}) => {
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <div className='text-center'>In order to redeem your item, you need to provide your email and name.</div>
         <div>
-            <label class="nc-Label text-base font-medium " data-nc-id="Label">Name</label>
+            <label className="nc-Label text-base font-medium " data-nc-id="Label">Name</label>
             <input type="text" id="name" name="name" value={name} className={`mt-1.5 flex block w-full rounded-2xl text-sm font-normal h-11 px-4 py-3 border`} onChange={onChange}/>
         </div>
         <div>
-            <label class="nc-Label text-base font-medium " data-nc-id="Label">Email</label>
+            <label className="nc-Label text-base font-medium " data-nc-id="Label">Email</label>
             <div className={`mt-1.5 flex block w-full rounded-2xl text-sm font-normal h-11border`}>
-                <span class="inline-flex items-center px-2.5 rounded-l-2xl text-neutral-500 dark:text-neutral-400 text-sm border"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg></span>
+                <span className="inline-flex items-center px-2.5 rounded-l-2xl text-neutral-500 dark:text-neutral-400 text-sm border"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg></span>
                 <input type="text" id="email" name="email" placeholder='example@email.com' value={email} className={`w-full rounded-r-2xl text-sm font-normal h-11 px-4 py-3 border`} onChange={onChange}/>
             </div>
         </div>

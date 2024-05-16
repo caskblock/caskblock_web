@@ -1,11 +1,20 @@
 const Item = ({ item, showModal }) => {
   if (!item) return <></>;
 
-  const { media, price, title } = item;
+  const { media, price, title, copies, issuedCount, id, burnWindowStart, burnWindowEnd } = item;
 
   const handleRedirect = () => {
-    window.location.href=`/products/${item.id}`
+    window.location.href=`/products/${id}`
   };
+
+  const dateToday = new Date().getTime();
+  const overStartDate = burnWindowStart === "" || Date.parse(burnWindowStart) <= dateToday;
+  const underEndDate = burnWindowEnd === "" || (Date.parse(burnWindowEnd) + (24 * 60 * 60 * 1000)) > dateToday;
+
+  const isOutsideBurnWindow = !overStartDate || !underEndDate;
+
+  const availableAmount = issuedCount ? copies - issuedCount : copies;
+  const isSoldOut = availableAmount <= 0;
 
   return (
     <div
@@ -20,23 +29,30 @@ const Item = ({ item, showModal }) => {
         />
       </div>
       <div className="p-4 py-5 space-y-3">
-        <h2 className="text-lg font-medium">{title}</h2>
+        <div className="flex gap-4 justify-between items-center">
+          <h2 className="text-lg font-medium">{title}</h2>
+          {copies &&
+            <p className="text-sm text-neutral-500">
+              {availableAmount}/{copies}
+            </p>}
+        </div>
         {price ? (
           <>
             <div className="w-2d4 w-full border-b border-neutral-100"></div>
             <div className="flex gap-4 justify-center items-end">
               <div className="pt-3">
-                <div className="cursor-pointer flex items-baseline border-2 border-green-500 rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
+                <div className={`flex items-baseline border-2 ${isSoldOut ? 'bg-gray-100 border-gray-200 hover:border-gray-200' : 'border-green-500'} rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold`}>
                   <button
-                    className="text-green-500 !leading-none"
+                    className={`${isSoldOut ? 'text-gray-400' : 'text-green-500'} !leading-none`}
                     onClick={(evt) => { evt.stopPropagation(); showModal(item); }}
+                    disabled={isSoldOut}
                   >
                     {price} USDC
                   </button>
                 </div>
               </div>
               <div className="pt-3">
-                <div className="cursor-pointer flex items-baseline border-2 hover:border-black rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
+                <div className="flex items-baseline border-2 hover:border-black rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
                   <button
                     className="duration-300 nc-Badge inline-flex px-2.5"
                     onClick={handleRedirect}
@@ -52,10 +68,11 @@ const Item = ({ item, showModal }) => {
             <div className="w-2d4 w-full border-b border-neutral-100"></div>
             <div className="flex gap-4 justify-center items-end">
               <div className="pt-3">
-                <div className="cursor-pointer flex items-baseline border-2 hover:border-black rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
+                <div className={`flex items-baseline border-2 rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold ${isOutsideBurnWindow ? 'bg-gray-100 border-gray-200 hover:border-gray-200' : 'hover:border-black'}`}>
                   <button
-                    className="duration-300 nc-Badge inline-flex px-2.5"
+                    className={`duration-300 nc-Badge inline-flex px-2.5 ${isOutsideBurnWindow ? 'text-gray-400' : 'text-black'}`}
                     onClick={() => showModal(item)}
+                    disabled={isOutsideBurnWindow}
                   >
                     <span>Redeem</span>
                   </button>
