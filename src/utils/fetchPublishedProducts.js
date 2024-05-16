@@ -2,10 +2,10 @@ export const fetchPublishedProducts = async (distillerySlug) => {
   const publishedProducts = await fetchPublishedProductsData(distillerySlug);
   const productsWithIssuedAmount = await fetchIssuedAmount(publishedProducts);
 
-  const outOfStockProducts = productsWithIssuedAmount.filter((product) => product.issuedCount >= product.copies);
-  const filteredProducts = productsWithIssuedAmount.filter((product) => !outOfStockProducts.includes(product));
+  // const outOfStockProducts = productsWithIssuedAmount.filter((product) => product.issuedCount >= product.copies);
+  // const filteredProducts = productsWithIssuedAmount.filter((product) => !outOfStockProducts.includes(product));
 
-  return filteredProducts;
+  return productsWithIssuedAmount;
 };
 
 const fetchPublishedProductsData = async (distillerySlug) => {
