@@ -35,7 +35,7 @@ const DesktopNavItems = ({
   return (
     <>
       <div className="hidden lg:flex px-6">
-        <ul className="nc-Navigation flex h-full gap-6">
+        <ul className="flex h-full gap-6">
           <li className="menu-item flex items-center menu-dropdown relative ">
             <button
               rel="noopener noreferrer"
@@ -136,6 +136,13 @@ const DesktopNavItems = ({
           onClick={handleClose}
         >
           Distilleries
+        </Link>
+        <Link
+          className="flex w-full justify-center items-center py-2.5 px-4 text-sm font-normal tracking-wide hover:bg-neutral-100 rounded-lg text-neutral-700 min-w-36"
+          href="/about"
+          onClick={handleClose}
+        >
+          About
         </Link>
       </Menu>
 

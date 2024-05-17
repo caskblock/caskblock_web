@@ -54,7 +54,7 @@ const Item = ({ item, showModal }) => {
               <div className="pt-3">
                 <div className="flex items-baseline border-2 hover:border-black rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold">
                   <button
-                    className="duration-300 nc-Badge inline-flex px-2.5"
+                    className="duration-300 inline-flex px-2.5"
                     onClick={handleRedirect}
                   >
                     <span>See details</span>
@@ -70,7 +70,7 @@ const Item = ({ item, showModal }) => {
               <div className="pt-3">
                 <div className={`flex items-baseline border-2 rounded-lg relative py-1.5 md:py-1 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold ${isOutsideBurnWindow ? 'bg-gray-100 border-gray-200 hover:border-gray-200' : 'hover:border-black'}`}>
                   <button
-                    className={`duration-300 nc-Badge inline-flex px-2.5 ${isOutsideBurnWindow ? 'text-gray-400' : 'text-black'}`}
+                    className={`duration-300 inline-flex px-2.5 ${isOutsideBurnWindow ? 'text-gray-400' : 'text-black'}`}
                     onClick={() => showModal(item)}
                     disabled={isOutsideBurnWindow}
                   >

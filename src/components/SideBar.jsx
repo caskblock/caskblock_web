@@ -74,6 +74,14 @@ const SideBar = ({
                   </Link>
                 </li>
                 <li className="text-neutral-900">
+                  <Link
+                    className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                    href="/about"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li className="text-neutral-900">
                   <button
                     className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
                     onClick={onRedirect}

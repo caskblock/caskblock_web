@@ -52,7 +52,7 @@ const SingleItem = ({ data, onClick }) => {
         <div className="rounded-3xl overflow-hidden z-0">
           <div className="flex justify-between items-center">
             <a
-              className="transition-colors hover:text-white duration-300 nc-Badge inline-flex px-2.5 py-1 rounded-full font-medium text-xs relative text-green-800 bg-green-100 hover:bg-green-800"
+              className="transition-colors hover:text-white duration-300 inline-flex px-2.5 py-1 rounded-full font-medium text-xs relative text-green-800 bg-green-100 hover:bg-green-800"
               href={`/distilleries/${distillerySlug}`}
             >
               {distillerySlug}
