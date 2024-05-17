@@ -23,7 +23,6 @@ export const getCallbackUrl = () => {
         ? window.location.origin + window.location.pathname
         : `}`
   }
-console.log('callbackUrl:',callbackUrl);
   return callbackUrl
 }
 

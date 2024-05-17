@@ -1,0 +1,37 @@
+import React, { FC, ReactNode } from "react";
+import Image, { StaticImageData } from "next/image";
+
+export interface SectionHeroProps {
+  rightImg: string | StaticImageData;
+  heading: ReactNode;
+  subHeading: string;
+  btnText: string;
+}
+
+const SectionHero: FC<SectionHeroProps> = ({
+  rightImg,
+  heading,
+  subHeading,
+}) => {
+  return (
+    <div
+      className={`relative`}
+    >
+      <div className="flex flex-col lg:flex-row space-y-14 lg:space-y-0 lg:space-x-10 items-center relative text-center lg:text-left">
+        <div className="w-screen max-w-full xl:max-w-lg space-y-5 lg:space-y-7">
+          <h2 className="text-3xl !leading-tight font-semibold text-neutral-900 md:text-4xl xl:text-5xl">
+            {heading}
+          </h2>
+          <span className="block text-base xl:text-lg text-neutral-6000">
+            {subHeading}
+          </span>
+        </div>
+        <div className="flex-grow">
+          <img className="w-full" src={rightImg as string} alt="" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SectionHero;

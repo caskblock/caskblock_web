@@ -28,9 +28,8 @@ const WalletPage = () => {
       if (!activeAccountId) {
         return [];
       } else {
-        const response = await fetchNftsInWallet(activeAccountId);
-        const parsedResponse = await response.json();
-        setNftsData(parsedResponse?.data?.mb_views_nft_tokens || []);
+        const data = await fetchNftsInWallet(activeAccountId);
+        setNftsData(data);
       }
     };
   
@@ -38,9 +37,9 @@ const WalletPage = () => {
   }, [activeAccountId]);
 
   return (
-    <div className="w-full flex flex-col items-start gap-4">
+    <div className="w-full flex flex-col items-start gap-4 py-12 px-12 rounded-3xl bg-neutral-100">
       <div className="flex w-full">
-        <Items nftsData={nftsData} showModal={handleOpenBurnModal}/>
+        <Items data={nftsData} showModal={handleOpenBurnModal}/>
       </div>
 
       <div className="mx-24 mt-4">

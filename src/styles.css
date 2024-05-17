@@ -3,17 +3,6 @@ background: rgb(144,40,47);
 background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 0%, rgba(16,18,35,0.3730085784313726) 55%);
 }
 
-.nc-box-has-hover:hover {
-    background-color: rgb(255 255 255);
-    border-color: rgba(229, 231, 235, .7);
-    border-color: rgba(black, .7) !important;
-    border-radius: 1.5rem;
-    border-width: 1px;
-    transition-duration: .15s;
-    transition-property: box-shadow;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
-}
-
 .transition-colors {
     transition-duration: .15s;
     transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
@@ -27,11 +16,18 @@ background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 
     background-color: rgb(2, 132, 199);
 }
 
+.bg-primary.disabled {
+    --tw-bg-opacity: 1;
+    background-color: rgb(229, 231, 235);
+    color: rgba(128, 128, 128, 0.863);
+    border: rgba(128, 128, 128, 0.863) 1px solid;
+}
+
 .bg-white {
     background-color: rgb(255 255 255);
 }
 
-.primary-button:hover{
+.primary-button:hover:not(.disabled){
     background-color: rgb(3, 105, 161);;
 }
 
@@ -56,4 +52,9 @@ background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 
 .dropdown-menu *:hover {
     color: #D4AF37;
     background-color: whitesmoke;
+}
+
+#distilleryNavItem .selected {
+    color: white;
+    background-color: black;
 }
