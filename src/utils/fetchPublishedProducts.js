@@ -24,7 +24,7 @@ const fetchPublishedProductsData = async (distillerySlug) => {
 const fetchIssuedAmount = async (publishedProducts) => {
   const contractNfts = await fetchContractNfts();
   const issuedCount = getIssuedCount(contractNfts);
-  
+
   for (const product of publishedProducts) {
     product.issuedCount = issuedCount[product.title] || 0;
   }
@@ -42,7 +42,7 @@ const fetchContractNfts = async () => {
     body: JSON.stringify({
       query: `query MyQuery {
           mb_views_nft_tokens(
-            where: {_and: [{nft_contract_id: {_eq: "jinkanfts.mintspace3.testnet"}}]}
+            where: {_and: [{nft_contract_id: {_eq: "${process.env.NEXT_PUBLIC_PWX_STORE}"}}]}
             order_by: {metadata_id: desc}
           ) {
     				title

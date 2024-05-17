@@ -2,7 +2,7 @@ export const fetchProductById = async (id) => {
 
     const product = await fetchProduct(id);
     const productWithIssuedAmount = await fetchIssuedAmount(product);
-    
+
     return productWithIssuedAmount
   };
 
@@ -21,7 +21,7 @@ export const fetchProductById = async (id) => {
   const fetchIssuedAmount = async (product) => {
     const contractNfts = await fetchContractNfts(product);
     const issuedCount = contractNfts.data.mb_views_nft_tokens.length;
-  
+
     product.issuedCount = issuedCount || 0;
 
     return product;
@@ -37,10 +37,10 @@ export const fetchProductById = async (id) => {
       body: JSON.stringify({
         query: `query MyQuery {
             mb_views_nft_tokens(
-              where: 
-              {_and: 
+              where:
+              {_and:
                 [
-                  {nft_contract_id: {_eq: "jinkanfts.mintspace3.testnet"}},
+                  {nft_contract_id: {_eq: "${process.env.NEXT_PUBLIC_PWX_STORE}"}},
                   {title: {_eq: "${product.title}"}}
                 ]
               }
@@ -51,7 +51,7 @@ export const fetchProductById = async (id) => {
           }`,
       }),
     });
-  
+
     const parsedResponse = await response.json();
     return parsedResponse;
   };
