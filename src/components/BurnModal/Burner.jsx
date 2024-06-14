@@ -1,24 +1,24 @@
 import { burn, execute } from "@mintbase-js/sdk";
- import { useMbWallet } from "@mintbase-js/react";
+import { useMbWallet } from "@mintbase-js/react";
 
- const Burner = ({tokenId, done}) => {
+ const Burner = ({tokenId}) => {
 
   const { selector } = useMbWallet();
 
   const handleBurn = async () => {
     const wallet = await selector.wallet();
 
-    const response = await execute(
+    const origin = window.location.origin;
+    const pathname = window.location.pathname;
+    const callbackUrl = `${origin}${pathname}`;
+
+    await execute(
       {
         wallet,
-        callbackUrl: window.location.href
+        callbackUrl,
       },
       burn({ contractAddress: process.env.NEXT_PUBLIC_PWX_STORE, tokenIds: [tokenId] })
     );
-
-    const { hash, signer_id } = response.transaction;
-
-    done(signer_id, hash);
   };
 
   return (

@@ -2,14 +2,18 @@ import { useState } from 'react';
 import ModalTemplate from '../ModalTemplate';
 import Burner from './Burner';
 import KYCForm from './KYCForm';
+import { useMbWallet } from "@mintbase-js/react";
 
 const emptyUser = {email: '', name: ''};
 
-const BurnModal = ({closeModal, tokenId}) => {
-  const [step, setStep] = useState(0);
+const BurnModal = ({closeModal, tokenId, success}) => {
+  const [step, setStep] = useState(success ? 2 : 0);
   const [user, setUser] = useState(emptyUser);
+  const [error, setError] = useState('');
 
-  const {email, name} = user;
+  const { activeAccountId } = useMbWallet();
+
+  const {name, surname, email, idCard, vat, propertyName, propertyVat, address, country} = user;
 
   const handleChange = (event) => {
     const {name, value} = event.target;
@@ -17,18 +21,28 @@ const BurnModal = ({closeModal, tokenId}) => {
     setUser(newUser);
   };
 
-  const handleSuccessfulBurn  = async (walletAddress, transactionHx) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const walletAddress = activeAccountId;
+
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({tokenId, name, email, walletAddress, transactionHx}),
+      body: JSON.stringify({tokenId, walletAddress, name, surname, email, idCard, vat, propertyName, propertyVat, address, country}),
     });
 
-    if (response.ok) {
-      setStep(2);
-      setTimeout(() => window.location.reload(), 5000);
+    const parsedResponse = await response.json();
+    const { orderId } = parsedResponse;
+    if (orderId) {
+      localStorage.setItem('orderId', orderId);
+      console.log("setting step 1")
+      setStep(1)
+    } else {
+      console.log("setting step 2")
+      setError('Please fill all fields');
     }
   };
 
@@ -36,11 +50,11 @@ const BurnModal = ({closeModal, tokenId}) => {
     <ModalTemplate closeModal={closeModal} title="Redeem" >
 
       { step == 0 &&
-          <KYCForm email={email} name={name} onChange={handleChange} onSubmit={() => setStep(1)}/>
+          <KYCForm user={user} onChange={handleChange} onSubmit={(e) => handleSubmit(e)} error={error} />
       }
 
       { step == 1 &&
-          <Burner tokenId={tokenId} done={handleSuccessfulBurn} />
+          <Burner tokenId={tokenId} />
       }
 
       { step == 2 &&
