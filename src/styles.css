@@ -1,4 +1,70 @@
-.gradient { 
+:root {
+    --color-plum-purple: #600060;
+    --color-coral-pink: #CA6060;
+    --color-carbon-black: #000000;
+    --color-cask-beige: #EFD7CE;
+    --color-mint-green: #8FC8B3;
+}
+
+div#hero {
+    height: 800px;
+}
+
+div#headline {
+    height: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+#about {
+    margin-top: 60px;
+}
+
+#about h2 {
+    color: var(--color-plum-purple);
+}
+
+#about span {
+    color: var(--color-carbon-black);
+}
+
+#how-to h3 {
+    color: var(--color-plum-purple);
+}
+
+#how-to span {
+    /* max-width: 230px; */
+    color: var(--color-carbon-black);
+}
+
+#highlights, #products-list {
+    background-color: var(--color-cask-beige);
+}
+
+.active-price {
+    color: var(--color-plum-purple);
+    border-color: var(--color-plum-purple) ;
+}
+
+.active-price-light {
+    color: var(--color-mint-green);
+    border-color: var(--color-mint-green) ;
+}
+
+.attribute-label {
+    background-color: var(--color-cask-beige);
+}
+
+#buy-button {
+    background-color: var(--color-plum-purple);
+}
+
+#token-warrant {
+    background-color: var(--color-coral-pink);
+    color: #ffffff;
+}
+
+.gradient {
 background: rgb(144,40,47);
 background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 0%, rgba(16,18,35,0.3730085784313726) 55%);
 }

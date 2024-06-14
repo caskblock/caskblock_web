@@ -1,14 +1,16 @@
 import React from "react";
+import Attribute from "./Attribute";
+
+const tokenWarrantLink = (productType) => {
+  return productType === 'Cask'
+    ? 'https://ipfs.io/ipfs/Qmdz89KUWPVPB4CiSq3za1dat6fEYc2CBvfRE3DWQrnJoA'
+    : 'https://ipfs.io/ipfs/QmbJBxMKBaUhjN19dpey8hCR627mQhbaDQHz4GHbQ6W9F4';
+}
 
 const SingleItem = ({ data, onClick }) => {
   const {
-    media,
-    title,
-    description,
-    price,
-    issuedCount,
-    copies,
-    distillerySlug,
+    media, title, description, price, issuedCount, copies, distillerySlug,
+    productType, country, brand, cask, style, alcohol, volume
   } = data;
 
   const availableAmount = issuedCount ? copies - issuedCount : copies;
@@ -30,25 +32,17 @@ const SingleItem = ({ data, onClick }) => {
             }}
           />
           <div className="w-full space-y-2.5 mt-4">
-            <div className="flex items-center justify-between w-full px-4 py-2 font-medium text-left bg-slate-100/80 rounded-lg">
-              <span>Description</span>
-            </div>
-            <div className="p-4 pt-3 last:pb-0 text-slate-600 text-sm">
-              {description}
-            </div>
-            <div className="flex items-center justify-between w-full px-4 py-2 font-medium text-left bg-slate-100/80 rounded-lg">
-              <span>Details</span>
-            </div>
-            <div className="p-4 pt-3 last:pb-0 text-slate-600 text-sm">
-              <p>Contract Address</p>
-              <p className="text-base line-clamp-1">
-                0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a
-              </p>
-            </div>
+          { country && <Attribute label="Country" value={country} />}
+          { brand && <Attribute label="Brand" value={brand} />}
+          { cask && <Attribute label="Cask" value={cask} />}
+          { style && <Attribute label="Style" value={style} />}
+          { alcohol && <Attribute label="Alcohol" value={alcohol} />}
+          { volume && <Attribute label="Volume" value={volume} />}
           </div>
         </div>
       </div>
       <div className="pb-9 space-y-5">
+        { distillerySlug &&
         <div className="rounded-3xl overflow-hidden z-0">
           <div className="flex justify-between items-center">
             <a
@@ -59,16 +53,17 @@ const SingleItem = ({ data, onClick }) => {
             </a>
           </div>
         </div>
+        }
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
           {title}
         </h2>
         <div className="pb-9 pt-14">
-          <div className="flex-1 flex items-center p-6 border-2 border-green-500 rounded-xl relative">
+          <div className="flex-1 flex items-center p-6 border-2 active-price-light rounded-xl relative">
             <div className="flex items-center w-full">
               <span className="absolute bottom-full translate-y-1 py-1 px-1.5 bg-white text-sm text-neutral-500 ">
                 Price
               </span>
-              <span className="text-3xl xl:text-4xl font-semibold text-green-500">
+              <span className="text-3xl xl:text-4xl font-semibold">
                 {price} USDC
               </span>
             </div>
@@ -80,6 +75,7 @@ const SingleItem = ({ data, onClick }) => {
           </div>
           <div className="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
             <button
+              id="buy-button"
               className={"primary-button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 bg-primary text-neutral-50 flex-1 focus:outline-none" + (isSoldOut ? " disabled" : "")}
               onClick={onClick}
               disabled={isSoldOut}
@@ -117,6 +113,21 @@ const SingleItem = ({ data, onClick }) => {
               <span className="ml-2.5">Buy Now</span>
             </button>
           </div>
+
+          <div class="mt-8 w-2d4 w-full border-b border-neutral-100"></div>
+
+          <div className="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+            { description }
+
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+            <a id="token-warrant" className="px-4 py-3 rounded-full text-sm text-neutral-500" href={tokenWarrantLink(productType)} target="_blank" rel="noreferrer">
+              Token Warrant ↗
+            </a>
+          </div>
+
+
         </div>
       </div>
     </div>

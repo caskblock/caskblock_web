@@ -21,7 +21,7 @@ const Item = ({ item, showModal }) => {
       className="relative flex flex-col group !border-0 bg-white hover:border-neutral-200 hover:shadow-md rounded-3xl"
       onClick={price ? handleRedirect : null}
     >
-      <div className="relative rounded-3xl w-full h-64 overflow-hidden">
+      <div className="relative rounded-3xl w-full h-72 overflow-hidden">
         <img
           src={media}
           alt={title}
@@ -41,9 +41,9 @@ const Item = ({ item, showModal }) => {
             <div className="w-2d4 w-full border-b border-neutral-100"></div>
             <div className="flex gap-4 justify-center items-end">
               <div className="pt-3">
-                <div className={`flex items-baseline border-2 ${isSoldOut ? 'bg-gray-100 border-gray-200 hover:border-gray-200' : 'border-green-500'} rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold`}>
+                <div className={`flex items-baseline border-2 ${isSoldOut ? 'bg-gray-100 border-gray-200 hover:border-gray-200' : 'active-price'} rounded-lg relative py-1.5 md:py-2 px-2.5 md:px-3.5 text-sm sm:text-base font-semibold`}>
                   <button
-                    className={`${isSoldOut ? 'text-gray-400' : 'text-green-500'} !leading-none`}
+                    className={`${isSoldOut ? 'text-gray-400' : 'active-price'} !leading-none`}
                     onClick={(evt) => { evt.stopPropagation(); showModal(item); }}
                     disabled={isSoldOut}
                   >

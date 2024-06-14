@@ -27,10 +27,10 @@ const ProductsPage = ({ distillerySlug = "" }) => {
 
         if (distillerySlug === "" && window.location.pathname.includes("distilleries")) {
           window.history.replaceState(null, "", "/products");
-        } 
+        }
 
         const products = await fetchPublishedProducts(distillerySlug);
-        
+
         setNftsData(products);
       } catch (error) {
         console.error("Error fetching NFTs:", error);
@@ -42,7 +42,7 @@ const ProductsPage = ({ distillerySlug = "" }) => {
 
   return (
     <>
-      <div className="flex w-full py-12 px-12 rounded-3xl bg-neutral-100">
+      <div id="products-list" className="flex w-full py-12 px-12 rounded-3xl">
         <Items data={nftsData} showModal={handleOpenBuyModal} />
       </div>
 
