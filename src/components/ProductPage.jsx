@@ -10,7 +10,6 @@ import { fetchProductById } from "@/utils/fetchProductById";
 const ProductPage = ({ id }) => {
   const [showBuyModal, setShowBuyModal] = useState(false);
   const [data, setData] = useState({});
-  const [success, setSuccess] = useState(false);
 
   const handleOpenBuyModal = () => {
     setShowBuyModal(true);
@@ -34,17 +33,6 @@ const ProductPage = ({ id }) => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const transactionHashes = params.get('transactionHashes');
-      if (transactionHashes) {
-        setShowBuyModal(true);
-        setSuccess(true);
-      }
-    }
-  }, [])
-
   return (
     <>
       {Object.keys(data).length !== 0
@@ -58,7 +46,6 @@ const ProductPage = ({ id }) => {
             closeModal={handleCloseBuyModal}
             metadataId={data?.metadataId}
             price={data?.price}
-            success={success}
           />
         )}
       </div>

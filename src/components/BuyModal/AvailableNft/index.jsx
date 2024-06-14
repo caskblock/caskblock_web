@@ -3,10 +3,10 @@ import { useMbWallet } from "@mintbase-js/react";
 import Minter from "./Minter";
 import { useState } from "react";
 
- const AvailableNft = ({metadataId, price, success}) => {
+ const AvailableNft = ({metadataId, price}) => {
   const { isConnected, connect } = useMbWallet();
 
-  const [step, setStep] = useState(success ? 1 : 0);
+  const [step, setStep] = useState(0);
 
   if (!isConnected) connect();
 
