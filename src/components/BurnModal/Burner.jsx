@@ -22,9 +22,15 @@ import { useMbWallet } from "@mintbase-js/react";
   };
 
   return (
-    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-      <button onClick={handleBurn} className="secondary-button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 border bg-white border-neutral-200 text-neutral-700 flex-1 focus:outline-none">Burn</button>
+    <>
+
+    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 m-8 ">
+      <div className='text-center'>Finally, to redeem your asset you will need to burn your NFT.</div>
     </div>
+    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+      <button onClick={handleBurn} className="cb-primary-button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 border border-neutral-200 text-neutral-700 flex-1 focus:outline-none">Burn</button>
+    </div>
+    </>
   );
 };
 

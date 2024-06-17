@@ -8,7 +8,7 @@ const KYCForm = ({user, onChange, onSubmit, error}) => {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>
-        <div className='text-center'>In order to redeem your item, you need to provide your email and name.</div>
+        <div className='text-center'>In order to redeem your asset, you need to provide your email and name.</div>
         <Textfield name="name" value={name} onChange={onChange} form={"kyc"}/>
         <Textfield name="surname" value={surname} onChange={onChange} form={"kyc"}/>
         <div>
@@ -25,10 +25,10 @@ const KYCForm = ({user, onChange, onSubmit, error}) => {
         <Textfield name="address" value={address} onChange={onChange} form={"kyc"}/>
         <Textfield name="country" value={country} onChange={onChange} form={"kyc"}/>
 
-        {error && <div className="text-red-500">{error}</div>}  
-        
+        {error && <div className="text-red-500">{error}</div>}
+
         <div className="flex items-center justify-between py-6 space-x-2">
-            <button className="relative h-11 inline-flex items-center justify-center rounded-2xl transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 border bg-primary border-neutral-200 text-neutral-50 primary-button flex-1">Submit</button>
+            <button className="cb-primary-button relative h-11 inline-flex items-center justify-center rounded-2xl transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6 border border-neutral-200 text-neutral-50 flex-1">Next</button>
         </div>
     </form>
   );

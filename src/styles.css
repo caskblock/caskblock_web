@@ -55,8 +55,9 @@ div#headline {
     background-color: var(--color-cask-beige);
 }
 
-#buy-button {
+#buy-button, .cb-primary-button {
     background-color: var(--color-plum-purple);
+    color: #ffffff;
 }
 
 #token-warrant {

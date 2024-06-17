@@ -1,7 +1,7 @@
 const Item = ({ item, showModal }) => {
   if (!item) return <></>;
 
-  const { media, price, title, copies, issuedCount, id, burnWindowStart, burnWindowEnd } = item;
+  const { media, price, title, token_id, copies, issuedCount, id, burnWindowStart, burnWindowEnd } = item;
 
   const handleRedirect = () => {
     window.location.href=`/products/${id}`
@@ -30,7 +30,7 @@ const Item = ({ item, showModal }) => {
       </div>
       <div className="p-4 py-5 space-y-3">
         <div className="flex gap-4 justify-between items-center">
-          <h2 className="text-lg font-medium">{title}</h2>
+          <h2 className="text-lg font-medium">{title} {token_id}</h2>
           {copies &&
             <p className="text-sm text-neutral-500">
               {availableAmount}/{copies}
