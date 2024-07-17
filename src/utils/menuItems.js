@@ -13,6 +13,18 @@ export const menuItems = [
   },
   {
     label: "About",
-    link: "/about",
+    link: "/pages/about",
+  },
+  {
+    label: "T&C",
+    link: "/pages/terms-and-conditions",
+  },
+  {
+    label: "Shipping",
+    link: "/pages/shipping",
+  },
+  {
+    label: "FAQs",
+    link: "/pages/faqs",
   },
 ];
