@@ -8,6 +8,9 @@ import "./globals.css";
 import { MintbaseWalletContextProvider } from "@mintbase-js/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Header from "@/components/header.jsx";
+import Footer from "@/components/footer.jsx";
+import AgeGate from "@/components/AgeGate";
+
 import { mbjs } from "@mintbase-js/sdk";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -47,9 +50,18 @@ export default function RootLayout({
     <QueryClientProvider client={queryClient}>
       <MintbaseWalletContextProvider {...MintbaseWalletSetup}>
         <html lang="en">
+          <head>
+            <title>CaskBlock</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="Where Tangibility Meets Technology" />
+            <link rel="icon" href="/favicon.png" />
+          </head>
           <body className={inter.className}>
-            <Header />
-            <div className="min-h-screen">{children}</div>
+            <AgeGate>
+              <Header />
+              <div className="min-h-screen">{children}</div>
+              <Footer />
+            </AgeGate>
           </body>
         </html>
       </MintbaseWalletContextProvider>

@@ -20,7 +20,7 @@ export default function Distillery({ params }) {
   }, []);
 
   return (
-    <main className="px-2 sm:px-8 md:px-24">
+    <main className="px-2 sm:px-8 md:px-24 py-12">
       <div className="p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row items-center bg-neutral-100 mb-8">
         <img
           alt="/logo.png"

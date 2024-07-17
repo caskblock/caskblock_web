@@ -38,10 +38,8 @@ const BurnModal = ({closeModal, tokenId, success}) => {
     const { orderId } = parsedResponse;
     if (orderId) {
       localStorage.setItem('orderId', orderId);
-      console.log("setting step 1")
       setStep(1)
     } else {
-      console.log("setting step 2")
       setError('Please fill all fields');
     }
   };

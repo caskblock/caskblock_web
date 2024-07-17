@@ -15,8 +15,8 @@ const LandingPage = () => {
 
       <HowTo />
 
-      <div id="highlights" className="w-full lg:py-32 py-20 px-12 mt-24 rounded-3xl">
-        <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-12 lg:mb-14">
+      <div id="highlights" className="mt-24 pt-14 rounded-3xl w-full">
+        <div className="relative flex flex-col sm:flex-row sm:items-end justify-between">
           <div className="flex flex-col items-center text-center w-full max-w-2xl mx-auto">
             <h2 className="flex items-center flex-wrap justify-center text-3xl md:text-4xl 2xl:text-5xl font-semibold">
               Top List of Whiskies

@@ -16,6 +16,9 @@ const HowTo = () => {
 
   return (
     <div id="how-to" className="mt-24 mx-auto">
+
+      <h3 className="text-2xl mb-12 font-semibold text-center">Secure, Direct & Transparent</h3>
+
       <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16 xl:gap-20">
 
         <div className="relative flex flex-col items-center max-w-xs mx-auto">

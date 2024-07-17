@@ -6,6 +6,11 @@
     --color-mint-green: #8FC8B3;
 }
 
+/* .sticky {
+    position: sticky;
+    top: 0;
+} */
+
 div#hero {
     height: 800px;
 }
@@ -16,20 +21,29 @@ div#headline {
     margin: 0 auto;
 }
 
+@media only screen and (max-width: 1100px) {
+div#hero {
+    background-image: url('/banner-mobile.jpg');
+}
+
+div#headline {
+    background-image: url('/headline-mobile.png');
+    background-position: top;
+}
+}
+
 #about {
     margin-top: 60px;
 }
 
-#about h2 {
+.text-purple,
+#about h2,
+#how-to h3 {
     color: var(--color-plum-purple);
 }
 
 #about span {
     color: var(--color-carbon-black);
-}
-
-#how-to h3 {
-    color: var(--color-plum-purple);
 }
 
 #how-to span {
@@ -60,7 +74,7 @@ div#headline {
     color: #ffffff;
 }
 
-#token-warrant {
+#token-warrant, .cb-secondary-button {
     background-color: var(--color-coral-pink);
     color: #ffffff;
 }
@@ -121,7 +135,37 @@ background: radial-gradient(circle, rgba(144,40,47,0.3) 0%, rgba(144,40,47,0.6) 
     background-color: whitesmoke;
 }
 
+.bg-beige,
+button.text-purple:hover,
+.bg-beige-hover:hover {
+    background-color: var(--color-cask-beige) !important;
+}
+
 #distilleryNavItem .selected {
     color: white;
     background-color: black;
+}
+
+#collection-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#products-list.top-offset {
+    margin-top: 560px;
+}
+
+
+/* Mobile -only */
+
+@media only screen and (max-width: 1280px) {
+
+#about #about-section-middle{
+    margin-top: 0em;
+    margin-bottom: 3em;
+}
+
 }

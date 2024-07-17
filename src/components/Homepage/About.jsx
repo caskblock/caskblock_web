@@ -1,12 +1,5 @@
 "use client";
 
-
-
-
-
-
-
-
 const labels = {
   heading1: "Meet CaskBlock",
   heading2: "Connecting tradition with technology",
@@ -37,7 +30,7 @@ const About = () => {
         <div className="flex-grow">
         </div>
 
-        <div className="w-screen max-w-full xl:max-w-xl space-y-5 lg:space-y-10">
+        <div id="about-section-middle" className="w-screen max-w-full xl:max-w-xl space-y-5 lg:space-y-10">
           <h2 className="text-3xl !leading-tight font-semibold text-neutral-900 md:text-4xl xl:text-5xl">
             {labels.heading2}
           </h2>

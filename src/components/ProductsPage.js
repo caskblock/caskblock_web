@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 import BuyModal from "./BuyModal";
 import Items from "./Items";
 import { fetchPublishedProducts } from "@/utils/fetchPublishedProducts";
+import CollectionHeader from "./CollectionHeader";
 
-const ProductsPage = ({ distillerySlug = "" }) => {
+const ProductsPage = ({ collectionHeader = false, distillerySlug = "" }) => {
   const [showBuyModal, setShowBuyModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const [nftsData, setNftsData] = useState([]);
+
+  console.log('collectionHeader:',collectionHeader);
 
   const handleOpenBuyModal = (item) => {
     setSelectedItem(item);
@@ -42,7 +45,9 @@ const ProductsPage = ({ distillerySlug = "" }) => {
 
   return (
     <>
-      <div id="products-list" className="flex w-full py-12 px-12 rounded-3xl">
+      { collectionHeader && <CollectionHeader items={nftsData} /> }
+
+      <div id="products-list" className={`flex w-full py-12 px-12 rounded-3xl ${collectionHeader ? 'top-offset' : ''}`}>
         <Items data={nftsData} showModal={handleOpenBuyModal} />
       </div>
 

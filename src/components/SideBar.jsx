@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { menuItems } from "@/utils/menuItems";
 
 const SideBar = ({
   onDrawerChange,
@@ -8,6 +9,7 @@ const SideBar = ({
   onRedirect,
   activeAccountId,
 }) => {
+
   return (
     <div
       className="fixed inset-0 z-50 overflow-y-auto"
@@ -44,43 +46,19 @@ const SideBar = ({
                   </svg>
                 </button>
               </div>
-              <div className="flex flex-col mt-5 text-neutral-700 text-sm pb-5 border-b">
-                <span className="text-neutral-900">Backed by real life</span>
-              </div>
 
               <ul className="flex flex-col py-6 px-2 space-y-1 pb-5 border-b">
-                <li className="text-neutral-900">
-                  <Link
-                    className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                    href="/"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="text-neutral-900">
-                  <Link
-                    className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                    href="/products"
-                  >
-                    Products
-                  </Link>
-                </li>
-                <li className="text-neutral-900">
-                  <Link
-                    className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                    href="/distilleries"
-                  >
-                    Distilleries
-                  </Link>
-                </li>
-                <li className="text-neutral-900">
-                  <Link
-                    className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
-                    href="/about"
-                  >
-                    About
-                  </Link>
-                </li>
+                { menuItems.map((item, index) => (
+                  <li className="text-neutral-900">
+
+                    <Link
+                      className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"
+                      href={item.link}
+                      >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
                 <li className="text-neutral-900">
                   <button
                     className="flex w-full items-center py-2.5 px-4 font-medium uppercase tracking-wide text-sm hover:bg-neutral-100 rounded-lg text-neutral-700"

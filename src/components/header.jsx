@@ -29,8 +29,8 @@ const Header = () => {
   };
 
   return (
-    <div className="relative z-10 onTop">
-      <div className="flex justify-between items-center px-6">
+    <div className="bg-white sticky top-0 z-50 w-full shadow-sm px-2 sm:px-8 md:px-24">
+      <div className="flex justify-between items-center">
         <div className="flex justify-start py-5 flex-grow items-center space-x-3 sm:space-x-8 lg:space-x-10">
           <img className="max-h-12 block" src={"/logo.png"} alt="logo" />
         </div>
@@ -44,7 +44,7 @@ const Header = () => {
             xmlns="http://www.w3.org/2000/svg"
             className="h-7 w-7"
             viewBox="0 0 20 20"
-            fill="currentColor"
+            fill="#600060"
           >
             <path
               fillRule="evenodd"
@@ -55,7 +55,7 @@ const Header = () => {
         </button>
 
         {/* desktop */}
-        <DesktopNavItems 
+        <DesktopNavItems
           activeAccountId={activeAccountId}
           buttonAction={buttonAction}
           buttonLabel={buttonLabel}

@@ -3,8 +3,8 @@
 const Hero = () => {
 
   return (
-    <div id="hero" className="bg-[url('/banner.jpg')] bg-no-repeat bg-cover bg-center w-full rounded-3xl">
-      <div id="headline" className="bg-[url('/headline.png')] bg-no-repeat  bg-cover bg-center w-full">
+    <div id="hero" className="bg-[url('/banner.jpg')] bg-no-repeat bg-cover bg-right w-full rounded-3xl">
+      <div id="headline" className="bg-[url('/headline.png')] bg-no-repeat  bg-cover bg-left w-full">
         {/* <h2 className="font-semibold text-4xl md:text-5xl xl:text-6xl !leading-[114%] text-white">
           Buy and sell NFTs backed by real asset.
         </h2>
