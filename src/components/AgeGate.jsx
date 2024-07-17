@@ -1,9 +1,17 @@
-import { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 
 const AgeGate = ({ children }) => {
-  const params = new URLSearchParams(window.location.search);
-  const skipGate = params.get('skg');
-  const transactionHashes = params.get('transactionHashes');
+  const [skipGate, setSkipGate] = useState(false);
+  const [transactionHashes, setTransactionHashes] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      setSkipGate(params.get('skg'));
+      setTransactionHashes(params.get('transactionHashes'));
+    }
+  }, []);
 
   const [isVerified, setIsVerified] = useState(false);
 
