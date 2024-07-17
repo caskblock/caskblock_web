@@ -51,6 +51,25 @@ div#headline {
     color: var(--color-carbon-black);
 }
 
+#how-to .grid > div {
+    position: relative;
+}
+
+#how-to .grid > div:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px; /* Adjust this value for horizontal gaps */
+    bottom: 0;
+    left: -80px; /* Adjust this value for vertical gaps */
+    background-image: url(/arrow.png);
+    background-position: left;
+    background-size: 80px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: -1; /* Ensure the image appears behind the grid items */
+}
+
 #highlights, #products-list {
     background-color: var(--color-cask-beige);
 }
@@ -162,6 +181,10 @@ button.text-purple:hover,
 /* Mobile -only */
 
 @media only screen and (max-width: 1280px) {
+
+#how-to .grid > div:not(:first-child)::before {
+    display: none;
+}
 
 #about #about-section-middle{
     margin-top: 0em;
