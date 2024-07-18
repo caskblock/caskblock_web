@@ -52,8 +52,8 @@ const AgeGate = ({ children }) => {
         <p className="text-sm mb-4">
           CaskBlock encourages responsible drinking. Alcohol should be consumed in moderation. <br />
           By entering this website, you are agreeing to our
-          <a className="underline pl-1" href='https://caskblock.io/terms' target='_blank' rel='noreferrer'>Terms and Conditions</a>, and
-          <a className="underline pl-1" href='https://caskblock.io/privacy' target='_blank' rel='noreferrer'>Cookie Policy</a>.
+          <a className="underline pl-1" href='/pages/terms-and-conditions?skg=1' target='_blank' rel='noreferrer'>Terms and Conditions</a>, and
+          <a className="underline pl-1" href='/pages/terms-and-conditions?skg=1' target='_blank' rel='noreferrer'>Cookie Policy</a>.
         </p>
       </div>
     </div>
