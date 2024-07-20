@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import Items from "./Items";
 import { useMbWallet } from "@mintbase-js/react";
 import BurnModal from "./BurnModal";
+import ModalTemplate from "./ModalTemplate";
 import { fetchNftsInWallet } from "@/utils/fetchNftsInWallet";
 
 const WalletPage = () => {
   const [selectedItem, setSelectedItem] = useState({});
   const [nftsData, setNftsData] = useState([]);
   const [showBurnModal, setShowBurnModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const { activeAccountId } = useMbWallet();
@@ -22,6 +24,11 @@ const WalletPage = () => {
   const handleCloseBurnModal = () => {
     setSelectedItem({});
     setShowBurnModal(false);
+  };
+
+  const handleSuccessfulPurchase = () => {
+    deleteQueryParams();
+    window.location.reload();
   };
 
   const handleSuccessfulBurn = async (transactionHashes) => {
@@ -65,16 +72,23 @@ const WalletPage = () => {
         setNftsData(data);
       }
     };
-  
+
     fetchData();
   }, [activeAccountId]);
 
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const transactionHashes = params.get('transactionHashes');
-      if (transactionHashes) handleSuccessfulBurn(transactionHashes);
+
+      const orderId = localStorage.getItem("orderId");
+
+      if (transactionHashes && orderId) {
+        handleSuccessfulBurn(transactionHashes);
+      } else if (transactionHashes) {
+        setShowSuccessModal(true);
+      }
     }
   }, []);
 
@@ -88,6 +102,18 @@ const WalletPage = () => {
         {!!showBurnModal && (
           <BurnModal closeModal={handleCloseBurnModal} tokenId={selectedItem?.token_id} success={success} />
         )}
+
+        {!!showSuccessModal && (
+          <ModalTemplate closeModal={handleSuccessfulPurchase} title="Success" >
+            <>
+              <div className="text-center">Transaction was successfull. <br/> Thank you for your purchase. 🎉</div>
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+                <button onClick={handleSuccessfulPurchase} className="relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium px-4 py-3 sm:px-6  cb-primary-button text-neutral-50 flex-1 focus:outline-none mt-2">Check Wallet</button>
+              </div>
+            </>
+          </ModalTemplate>
+        )}
+
       </div>
     </div>
   );

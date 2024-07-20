@@ -11,7 +11,7 @@ const Minter = ({metadataId, price, onStepChange}) => {
     const response = await execute(
       {
         wallet,
-        callbackUrl: window.location.href
+        callbackUrl: window.location.origin + '/wallet'
       },
       mintOnMetadata({
         contractAddress: process.env.NEXT_PUBLIC_PWX_STORE,

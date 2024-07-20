@@ -1,4 +1,4 @@
-const BuyModalTemplate = ({closeModal, title, children}) => {
+const ModalTemplate = ({closeModal, title, children}) => {
 
   return (
     <div
@@ -59,4 +59,4 @@ const BuyModalTemplate = ({closeModal, title, children}) => {
   );
 };
 
-export default BuyModalTemplate;
+export default ModalTemplate;
