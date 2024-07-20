@@ -3,7 +3,7 @@
 const Faqs = () => {
   return (
     <div className="w-full flex flex-col">
-      <h2 className="text-3xl font-bold mb-8">FAQ’s</h2>
+      <h2 className="text-3xl font-bold mb-8">FAQ</h2>
 
       <div className="page-section mb-8">
         <h3 className="text-xl mb-4 font-bold">1 - CaskBlock - How does it work</h3>

@@ -30,7 +30,7 @@ export const menuItems = [
     mobile: true,
   },
   {
-    label: "FAQs",
+    label: "FAQ",
     link: "/pages/faqs",
     mobile: true,
   },
