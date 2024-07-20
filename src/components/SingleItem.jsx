@@ -1,16 +1,10 @@
 import React from "react";
 import Attribute from "./Attribute";
 
-const tokenWarrantLink = (productType) => {
-  return productType === 'Cask'
-    ? 'https://ipfs.io/ipfs/Qmdz89KUWPVPB4CiSq3za1dat6fEYc2CBvfRE3DWQrnJoA'
-    : 'https://ipfs.io/ipfs/QmbJBxMKBaUhjN19dpey8hCR627mQhbaDQHz4GHbQ6W9F4';
-}
-
 const SingleItem = ({ data, onClick }) => {
   const {
     media, title, description, price, issuedCount, copies, distillerySlug,
-    productType, country, brand, cask, style, alcohol, volume
+    productType, country, brand, cask, style, alcohol, volume, tokenWarrant
   } = data;
 
   const availableAmount = issuedCount ? copies - issuedCount : copies;
@@ -122,7 +116,7 @@ const SingleItem = ({ data, onClick }) => {
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-            <a id="token-warrant" className="px-4 py-3 rounded-full text-sm text-neutral-500" href={tokenWarrantLink(productType)} target="_blank" rel="noreferrer">
+            <a id="token-warrant" className="px-4 py-3 rounded-full text-sm text-neutral-500" href={tokenWarrant} target="_blank" rel="noreferrer">
               Token Warrant ↗
             </a>
           </div>
