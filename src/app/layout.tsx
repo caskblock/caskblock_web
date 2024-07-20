@@ -15,16 +15,13 @@ import { mbjs } from "@mintbase-js/sdk";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const isDev = process.env.NEXT_PUBLIC_ENV === 'dev'
+// export const isDev = process.env.NEXT_PUBLIC_ENV === 'dev'
 
 export const getCallbackUrl = () => {
   let callbackUrl = ''
 
   if (typeof window !== 'undefined') {
-    callbackUrl =
-      isDev || window?.location?.host.includes('localhost')
-        ? window.location.origin + window.location.pathname
-        : `}`
+    callbackUrl = window.location.origin + window.location.pathname
   }
   return callbackUrl
 }
@@ -41,8 +38,8 @@ export default function RootLayout({
   })
 
   const MintbaseWalletSetup = {
-    contractAddress: "hellovirtualworld.mintspace2.testnet",
-    network: "testnet",
+    // contractAddress: "hellovirtualworld.mintspace2.testnet",
+    network: mbjs.config().network,
     callbackUrl: getCallbackUrl(),
   };
 
