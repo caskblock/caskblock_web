@@ -2,33 +2,22 @@
 import React, { useState, useEffect } from 'react';
 
 const AgeGate = ({ children }) => {
-  const [skipGate, setSkipGate] = useState(false);
-  const [transactionHashes, setTransactionHashes] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      setSkipGate(params.get('skg'));
-      setTransactionHashes(params.get('transactionHashes'));
-    }
-  }, []);
-
-  const [isVerified, setIsVerified] = useState(false);
+  const [skipGate, setSkipGate] = useState(true);
 
   useEffect(() => {
     const ageVerified = localStorage.getItem('ageVerified');
 
-    if (ageVerified) {
-      setIsVerified(true);
+    if (!ageVerified) {
+      setSkipGate(false);
     }
   }, []);
 
   const handleSubmit = () => {
     localStorage.setItem('ageVerified', true);
-    setIsVerified(true);
+    setSkipGate(true);
   };
 
-  if (skipGate || transactionHashes || isVerified) {
+  if (skipGate) {
     return <>{children}</>;
   }
 
@@ -40,7 +29,7 @@ const AgeGate = ({ children }) => {
         <p className="text-lg mt-8 mb-4">You must confirm that you are legal to drink in your country</p>
 
         <div className="mt-8 mb-8">
-          <button onClick={() => setIsVerified(false)} className="cb-secondary-button px-4 py-2 rounded">
+          <button onClick={() => {}} className="cb-secondary-button px-4 py-2 rounded">
             No
           </button>
 
