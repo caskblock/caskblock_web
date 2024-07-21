@@ -1,6 +1,8 @@
 "use client";
 
 import "@near-wallet-selector/modal-ui/styles.css";
+import { GoogleAnalytics } from '@next/third-parties/google'
+import ReactPixel from 'react-facebook-pixel';
 import { Inter } from "next/font/google";
 import "../styles.css";
 import "./globals.css";
@@ -43,6 +45,9 @@ export default function RootLayout({
     callbackUrl: getCallbackUrl(),
   };
 
+  ReactPixel.init('');
+  ReactPixel.pageView(); // For tracking page view
+
   return (
     <QueryClientProvider client={queryClient}>
       <MintbaseWalletContextProvider {...MintbaseWalletSetup}>
@@ -60,6 +65,7 @@ export default function RootLayout({
               <Footer />
             </AgeGate>
           </body>
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
         </html>
       </MintbaseWalletContextProvider>
     </QueryClientProvider>
