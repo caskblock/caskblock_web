@@ -32,7 +32,9 @@ const Header = () => {
     <div className="bg-white sticky top-0 z-50 w-full shadow-sm px-2 sm:px-8 md:px-24">
       <div className="flex justify-between items-center">
         <div className="flex justify-start py-5 flex-grow items-center space-x-3 sm:space-x-8 lg:space-x-10">
-          <img className="max-h-12 block" src={"/logo.png"} alt="logo" />
+          <a href="/">
+            <img className="max-h-12 block" src={"/logo.png"} alt="logo" />
+          </a>
         </div>
 
         {/* mobile */}

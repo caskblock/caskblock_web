@@ -7,9 +7,7 @@ const labels = {
   collectionDescription: "Discover and engage directly with the finest distilleries to find premium whisky casks and bottle collections.",
 };
 
-const CollectionHeader = ({ items = [] }) => {
-  const casks = items.filter((item) => item.productType === "Cask");
-  const bottles = items.filter((item) => item.productType === "Bottle");
+const CollectionHeader = ({ casks = [], bottles = [] }) => {
 
   const minCaskPrice = Math.min(...casks.map((item) => item.price));
   const minBottlePrice = Math.min(...bottles.map((item) => item.price));
@@ -50,33 +48,41 @@ const CollectionHeader = ({ items = [] }) => {
                   { labels.collectionDescription }
                 </span>
               </div>
-              <div className="mt-6 xl:mt-8 grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 xl:gap-6">
-                {/* ----- 1 ----- */}
-                <div className=" bg-green-50 rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
-                  <span className="text-sm text-neutral-500 ">
+              <div className="mt-6 xl:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 xl:gap-6">
+                {/* ----- Cask floor price ----- */}
+                <div className="bg-[#88D9C5] rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
+                  <span className="text-md text-[#5A2660]">
                     Cask floor price
                   </span>
-                  <span className="font-medium text-base mt-4 sm:text-xl sm:mt-6">
+                  <span className="font-large text-base font-bold mt-2 sm:text-xl sm:mt-2 text-[#5A2660]">
                     { minCaskPrice } USDC
                   </span>
                 </div>
-                {/* ----- Latest Price ----- */}
-                <div className=" bg-sky-50 rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
-                  <span className="text-sm text-neutral-500">
+                {/* ----- Bottle floor price ----- */}
+                <div className="bg-[#EFD6D3] rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
+                  <span className="text-md text-[#5A2660]">
                     Bottle floor price
                   </span>
-                  <span className="font-medium text-base mt-4 sm:text-xl sm:mt-6">
+                  <span className="font-large text-base font-bold mt-2 sm:text-xl sm:mt-2 text-[#5A2660]">
                     { minBottlePrice } USDC
                   </span>
                 </div>
-
-                {/* -----Items ----- */}
-                <div className=" bg-yellow-50 rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
-                  <span className="text-sm text-neutral-500">
-                    Available items
+                {/* ----- Available bottles ----- */}
+                <div className="bg-[#EE7C71] rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
+                  <span className="text-md text-[#EFD6D3]">
+                    Available Bottles
                   </span>
-                  <span className="font-medium text-base mt-4 sm:text-xl sm:mt-6">
-                    { items.length }
+                  <span className="font-large text-base font-bold mt-2 sm:text-xl sm:mt-2 text-[#EFD6D3]">
+                    { bottles.length }
+                  </span>
+                </div>
+                {/* ----- Available casks ----- */}
+                <div className="bg-[#5A2660] rounded-2xl flex flex-col items-center justify-center p-5 lg:p-6">
+                  <span className="text-md text-[#EFD6D3]">
+                    Available Casks
+                  </span>
+                  <span className="font-large text-base font-bold mt-2 sm:text-xl sm:mt-2 text-[#EFD6D3]">
+                    { casks.length }
                   </span>
                 </div>
               </div>

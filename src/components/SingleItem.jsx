@@ -119,6 +119,10 @@ const SingleItem = ({ data, onClick }) => {
             <a id="token-warrant" className="px-4 py-3 rounded-full text-sm text-neutral-500" href={tokenWarrant} target="_blank" rel="noreferrer">
               Token Warrant ↗
             </a>
+
+            <a id="shipping-button" className="px-4 py-3 rounded-full text-sm text-neutral-500" href="/pages/shipping" target="_blank" rel="noreferrer">
+              Shipping ↗
+            </a>
           </div>
 
 

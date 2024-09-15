@@ -12,7 +12,8 @@ const ProductsPage = ({ collectionHeader = false, distillerySlug = "" }) => {
   const [selectedItem, setSelectedItem] = useState({});
   const [nftsData, setNftsData] = useState([]);
 
-  console.log('collectionHeader:',collectionHeader);
+  const casks = nftsData.filter((item) => item.productType === "Cask");
+  const bottles = nftsData.filter((item) => item.productType === "Bottle");
 
   const handleOpenBuyModal = (item) => {
     setSelectedItem(item);
@@ -45,11 +46,17 @@ const ProductsPage = ({ collectionHeader = false, distillerySlug = "" }) => {
 
   return (
     <>
-      { collectionHeader && <CollectionHeader items={nftsData} /> }
+      { collectionHeader && <CollectionHeader casks={casks} bottles={bottles} /> }
 
       <div id="products-list" className={`flex w-full py-12 px-12 rounded-3xl ${collectionHeader ? 'top-offset' : ''}`}>
-        <Items data={nftsData} showModal={handleOpenBuyModal} />
+        <Items data={collectionHeader ? bottles : nftsData} showModal={handleOpenBuyModal} />
       </div>
+
+      { collectionHeader && (
+        <div id="products-list" className={`flex w-full py-12 px-12 rounded-3xl mt-12`}>
+          <Items data={casks} showModal={handleOpenBuyModal} />
+        </div>
+      )}
 
       <div className="mx-24 mt-4">
         {!!showBuyModal && (
