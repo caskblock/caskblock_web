@@ -111,7 +111,7 @@ export default function RootLayout({
               <Footer />
             </AgeGate>
             <CookieConsent />
-            {/* <ChatBot /> */}
+            <ChatBot />
           </body>
         </html>
       </MintbaseWalletContextProvider>
