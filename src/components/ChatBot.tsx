@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { sendChatMessage } from '../utils/chatApi';
 
 const ChatBot: React.FC = () => {
   const [showChatbot, setShowChatbot] = useState(false);
@@ -14,15 +15,19 @@ const ChatBot: React.FC = () => {
 
   const toggleChat = () => setIsOpen(!isOpen);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
       setMessages([...messages, { text: input, isUser: true }]);
       setInput('');
-      // Simulate bot response
-      setTimeout(() => {
-        setMessages(prev => [...prev, { text: "Let me think about it...", isUser: false }]);
-      }, 1000);
+
+      try {
+        const response = await sendChatMessage(input);
+        setMessages(prev => [...prev, { text: response.message, isUser: false }]);
+      } catch (error) {
+        console.error('Error sending chat message:', error);
+        setMessages(prev => [...prev, { text: "Sorry, I'm having trouble responding right now.", isUser: false }]);
+      }
     }
   };
 
