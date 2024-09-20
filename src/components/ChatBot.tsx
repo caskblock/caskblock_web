@@ -74,7 +74,7 @@ const ChatBot: React.FC = () => {
       ) : (
         <button
           onClick={toggleChat}
-          className="bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+          className="bg-[#600060] text-white p-4 rounded-full shadow-lg hover:bg-[#8FC8B3] transition-colors"
         >
           Chat with Concierge
         </button>
