@@ -2,7 +2,9 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ChatResponse {
-  botResponse: string;
+  data: {
+    botResponse: string;
+  };
 }
 
 const token = process.env.NEXT_PUBLIC_CHATBOT_TOKEN;
@@ -27,7 +29,7 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
       process.env.NEXT_PUBLIC_CHATBOT_API || '',
       {
         message: message.trim(),
-        v: '0',
+        v: '1',
         categories: []
       },
       {
