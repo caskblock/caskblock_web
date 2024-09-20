@@ -5,8 +5,8 @@ interface ChatResponse {
   message: string;
 }
 
-const token = process.env.NEXT_CHATBOT_TOKEN;
-const userId = process.env.NEXT_CHATBOT_USERID;
+const token = process.env.NEXT_PUBLIC_CHATBOT_TOKEN;
+const userId = process.env.NEXT_PUBLIC_CHATBOT_USERID;
 let chatUser: string | null = null;
 
 export function initializeChatUser() {
@@ -24,7 +24,7 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
 
   try {
     const response = await axios.post<ChatResponse>(
-      process.env.NEXT_CHATBOT_API || '',
+      process.env.NEXT_PUBLIC_CHATBOT_API || '',
       {
         message: message.trim(),
         v: '0',
@@ -38,7 +38,7 @@ export async function sendChatMessage(message: string): Promise<ChatResponse> {
         }
       }
     );
-    console.log('response:',response);
+
     return response.data;
   } catch (error: any) {
     console.error('Error:', error.response ? error.response.data : error.message);
