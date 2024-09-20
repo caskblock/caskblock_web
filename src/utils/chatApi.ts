@@ -2,7 +2,7 @@ import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 interface ChatResponse {
-  message: string;
+  botResponse: string;
 }
 
 const token = process.env.NEXT_PUBLIC_CHATBOT_TOKEN;

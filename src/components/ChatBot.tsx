@@ -23,7 +23,7 @@ const ChatBot: React.FC = () => {
 
       try {
         const response = await sendChatMessage(input);
-        setMessages(prev => [...prev, { text: response.message, isUser: false }]);
+        setMessages(prev => [...prev, { text: response.botResponse, isUser: false }]);
       } catch (error) {
         console.error('Error sending chat message:', error);
         setMessages(prev => [...prev, { text: "Sorry, I'm having trouble responding right now.", isUser: false }]);
