@@ -2,13 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { sendChatMessage } from '../utils/chatApi';
 
 const ChatBot: React.FC = () => {
-  const [showChatbot, setShowChatbot] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setShowChatbot(params.get('chatbot') === 'true');
-  }, []);
-
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([]);
   const [input, setInput] = useState('');
@@ -34,8 +27,6 @@ const ChatBot: React.FC = () => {
       }
     }
   };
-
-  if (!showChatbot) return null;
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
