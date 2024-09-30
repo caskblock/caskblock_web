@@ -110,8 +110,8 @@ export default function RootLayout({
               <div className="min-h-screen">{children}</div>
               <Footer />
             </AgeGate>
-            <CookieConsent />
             <ChatBot />
+            <CookieConsent />
           </body>
         </html>
       </MintbaseWalletContextProvider>
